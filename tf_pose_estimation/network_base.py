@@ -5,7 +5,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
-import common
+from tf_pose_estimation import common
 
 DEFAULT_PADDING = 'SAME'
 

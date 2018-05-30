@@ -1,16 +1,14 @@
-import logging
-
-import slidingwindow as sw
-
-from pafprocess import pafprocess
 import cv2
 import numpy as np
 import tensorflow as tf
+import logging
 import time
 
-import common
-from common import CocoPart
-from tensblur.smoother import Smoother
+from tf_pose_estimation.pafprocess import pafprocess
+import tf_pose_estimation.slidingwindow as sw
+import tf_pose_estimation.common as common
+from tf_pose_estimation.common import CocoPart
+from tf_pose_estimation.tensblur.smoother import Smoother
 
 logger = logging.getLogger('TfPoseEstimator')
 logger.setLevel(logging.INFO)

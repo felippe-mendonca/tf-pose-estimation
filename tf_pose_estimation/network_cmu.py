@@ -1,4 +1,4 @@
-import network_base
+from tf_pose_estimation import network_base
 import tensorflow as tf
 
 

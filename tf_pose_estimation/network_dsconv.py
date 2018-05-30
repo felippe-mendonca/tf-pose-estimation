@@ -1,5 +1,4 @@
-import network_base
-
+import .network_base
 
 class DSConvNetwork(network_base.BaseNetwork):
     def __init__(self, inputs, trainable=True, conv_width=1.0):

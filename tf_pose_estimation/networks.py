@@ -1,11 +1,11 @@
 import os
 
 import tensorflow as tf
-from network_mobilenet import MobilenetNetwork
-from network_mobilenet_thin import MobilenetNetworkThin
+from tf_pose_estimation.network_mobilenet import MobilenetNetwork
+from tf_pose_estimation.network_mobilenet_thin import MobilenetNetworkThin
 
-from network_cmu import CmuNetwork
-from network_personlab import PersonLabNetwork
+from tf_pose_estimation.network_cmu import CmuNetwork
+from tf_pose_estimation.network_personlab import PersonLabNetwork
 
 
 def _get_base_path():
@@ -73,10 +73,10 @@ def get_network(type, placeholder_input, sess_for_load=None, trainable=True):
     return net, pretrain_path_full, last_layer
 
 
-def get_graph_path(model_name):
+def get_graph_path(model_name, base_path='.'):
     dyn_graph_path = {
-        'cmu': './models/graph/cmu/graph_opt.pb',
-        'mobilenet_thin': './models/graph/mobilenet_thin/graph_opt.pb'
+        'cmu': os.path.join(base_path, 'models/graph/cmu/graph_opt.pb'),
+        'mobilenet_thin': os.path.join(base_path, 'models/graph/mobilenet_thin/graph_opt.pb')
     }
     graph_path = dyn_graph_path[model_name]
     for path in (graph_path, os.path.join(os.path.dirname(os.path.abspath(__file__)), graph_path), os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', graph_path)):
