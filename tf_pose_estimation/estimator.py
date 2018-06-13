@@ -122,7 +122,7 @@ class PoseEstimator:
 class TfPoseEstimator:
     # TODO : multi-scale
 
-    def __init__(self, graph_path, target_size=(320, 240)):
+    def __init__(self, graph_path, target_size=(320, 240), gpu_mem_allow_growth=True):
         self.target_size = target_size
 
         # load graph
@@ -133,7 +133,8 @@ class TfPoseEstimator:
 
         self.graph = tf.get_default_graph()
         tf.import_graph_def(graph_def, name='TfPoseEstimator')
-        self.persistent_sess = tf.Session(graph=self.graph)
+        gpu_options = tf.GPUOptions(allow_growth=gpu_mem_allow_growth)
+        self.persistent_sess = tf.Session(graph=self.graph, config=tf.ConfigProto(gpu_options=gpu_options))
 
         # for op in self.graph.get_operations():
         #     print(op.name)
