@@ -10,7 +10,7 @@ pafprocess=Extension('_pafprocess',                         \
 
 setup(
     name='tf_pose_estimation',
-    version='0.1',
+    version='0.2',
     description='',
     ext_modules=[pafprocess],
     packages=[
@@ -25,6 +25,6 @@ setup(
         'tf_pose_estimation.slim.preprocessing',
         'tf_pose_estimation.tensblur'
     ],
-    install_requires=['opencv-python', 'psutil'],
+    install_requires=['opencv-python==3.3.1.*', 'psutil==5.4.5'],
     zip_safe=False
 )
